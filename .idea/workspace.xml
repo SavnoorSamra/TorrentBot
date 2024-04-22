@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9540c4b9-6bad-454e-9263-571eb6f63d26" name="Changes" comment="Initial Build">
-      <change afterPath="$PROJECT_DIR$/responses.py" afterDir="false" />
+    <list default="true" id="9540c4b9-6bad-454e-9263-571eb6f63d26" name="Changes" comment="Working&#10;/hello command implemented for testing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713688004864</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working&#10;/hello command implemented for testing">
+      <option name="closed" value="true" />
+      <created>1713691569567</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713691569567</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -118,6 +126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Build" />
+    <MESSAGE value="Working&#10;/hello command implemented for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working&#10;/hello command implemented for testing" />
   </component>
 </project>

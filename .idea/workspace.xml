@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9540c4b9-6bad-454e-9263-571eb6f63d26" name="Changes" comment="Outputs list of all torrents in qbit with percentage and eta">
+    <list default="true" id="9540c4b9-6bad-454e-9263-571eb6f63d26" name="Changes" comment="Outputs currently downloading torrents">
+      <change afterPath="$PROJECT_DIR$/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/responses.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713758331532</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Outputs currently downloading torrents">
+      <option name="closed" value="true" />
+      <created>1713856257420</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713856257420</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -136,6 +146,7 @@
     <MESSAGE value="Initial Build" />
     <MESSAGE value="Working&#10;/hello command implemented for testing" />
     <MESSAGE value="Outputs list of all torrents in qbit with percentage and eta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Outputs list of all torrents in qbit with percentage and eta" />
+    <MESSAGE value="Outputs currently downloading torrents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Outputs currently downloading torrents" />
   </component>
 </project>

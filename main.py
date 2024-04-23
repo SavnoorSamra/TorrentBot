@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from discord import Intents, Client, Message, app_commands
 from discord.ext import commands
 import qbittorrentapi
+import discord
 
 
 load_dotenv()
@@ -19,24 +20,39 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 # MESSAGES
 
 # BOT PARAMETERS
+
 @bot.hybrid_command()
 async def hello(ctx: commands.Context):
     await ctx.send('bye')
+
 @bot.hybrid_command()
 async def torrents(ctx: commands.Context):
     TorrentList = []
-    counter = 0
-    for torrent in qbt_client.torrents_info():
+    count=0
+
+    #for torrent in qbt_client.torrents_info():
+    for torrent in qbt_client.torrents.info.active():
+        count=count+1
         TempList=[]
-        TempList.append(torrent.name)
-        TempList.append(torrent.category)
-        TempList.append(str(round(torrent.progress*100,2))+"%")
-        TempList.append(torrent.state)
-        TempList.append(convertTime(torrent.eta))
+        TempList.append(torrent.name + "\n" + convertTime(torrent.eta))
+        #TempList.append(torrent.category)
+        #TempList.append(str(round(torrent.progress*100,2))+"%")
+        #TempList.append(torrent.state)
+        #TempList.append(convertTime(torrent.eta))
         TorrentList.append(TempList)
-        counter=counter+1
-    await ctx.send(TorrentList)
-    #await ctx.send(f"{torrent.hash[-6:]}: {torrent.name} ({torrent.state})")
+
+    embed = discord.Embed(
+        title="**TORRENTS**",
+        description="Currently Downloading Torrents",
+        color=ctx.author.colour
+    )
+    if count == 0:
+        await ctx.send("No Torrents Currently Downloading!")
+    else:
+        for item in TorrentList:
+            embed.add_field(name="Name", value=item[0])
+        await ctx.send(embed=embed)
+
 def convertTime(seconds):
     intervals = (
     ('weeks', 604800),  # 60 * 60 * 24 * 7
@@ -55,7 +71,7 @@ def convertTime(seconds):
                 result.append("{} {}".format(value, name))
         return 'ETA: '+', '.join(result[:])
     else:
-        return "inf"
+        return "N/A"
 
 @bot.event
 async def on_ready():
@@ -85,6 +101,7 @@ for k, v in qbt_client.app.build_info.items():
 async def on_message(message: Message):
     if message.author == bot.user:
         return
+
     username = message.author
     user_message = message.content
     channel = message.channel

@@ -122,6 +122,5 @@ for k, v in qbt_client.app.build_info.items():
 def main():
     bot.run(TOKEN)
 
-
 if __name__ == '__main__':
     main()

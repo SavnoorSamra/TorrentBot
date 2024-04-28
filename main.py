@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from discord import Intents, Client, Message, app_commands
+from discord import Intents
 from discord.ext import commands
 import qbittorrentapi
 import discord
@@ -16,10 +16,6 @@ PORT = os.getenv('port')
 
 intents = Intents.all()
 bot = commands.Bot(command_prefix='/', intents=intents)
-
-@bot.hybrid_command()
-async def hello(ctx: commands.Context):
-    await ctx.send('bye')
 
 @bot.hybrid_command()
 async def downloading(ctx: commands.Context):
@@ -99,7 +95,6 @@ async def all(ctx: commands.Context):
             embed.add_field(name="Other" ,value=item[0])
         await ctx.send(embed=embed)
 
-
 @bot.event
 async def on_ready():
     print(f'{bot.user} is now running! \nMade By @SavnoorSamra')
@@ -126,6 +121,7 @@ for k, v in qbt_client.app.build_info.items():
 
 def main():
     bot.run(TOKEN)
+
 
 if __name__ == '__main__':
     main()

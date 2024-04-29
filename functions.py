@@ -1,4 +1,3 @@
-from random import choice, randint
 def convertTime(seconds):
     intervals = (
     ('weeks', 604800),  # 60 * 60 * 24 * 7

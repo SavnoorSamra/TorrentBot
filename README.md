@@ -22,7 +22,7 @@
 
 
 
-<h3 align="center">Torrent Bot</h3>
+<h1 align="center">Torrent Bot</h1>
 
 
 <!-- TABLE OF CONTENTS -->

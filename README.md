@@ -150,7 +150,7 @@ There are two commands to view the status of your downloads
 ## Contact
 
 Savnoor Samra
-Discord: @chairbell
+* Discord: @chairbell
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments

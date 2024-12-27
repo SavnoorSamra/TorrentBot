@@ -97,9 +97,10 @@ Install the following packages:
 * password = The password of your qBittorrent server
 * host = The host IP of your qBittorrent server
 * port = The port on which the webUI of your qBittorrent server runs
-3. In the folder containing the dockerfile run the following command:
+3. In the folder containing the dockerfile run the following command: (Enter the directory the git repo was cloned to if you haven't already)
    ```commandline
-   sudo docker build --tag 'torrentbot'
+   cd TorrentBot
+   sudo docker build ./ --tag 'torrentbot'
    sudo docker run torrentbot
    ```
 4. Your bot should now be connected and online!

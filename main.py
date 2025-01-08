@@ -46,7 +46,7 @@ async def downloading(ctx: commands.Context):
         color=ctx.author.colour
     )
     if count == 0:
-        await ctx.send("No Torrents Currently Downloading!")
+        await ctx.send("No Torrents Currently Downloading!",  ephemeral=True)
     else:
         for item in MovieList:
             embed.add_field(name="Movie", value=item[0])
@@ -54,7 +54,7 @@ async def downloading(ctx: commands.Context):
             embed.add_field(name="TV Show", value=item[0])
         for item in OtherList:
             embed.add_field(name="Other" ,value=item[0])
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, ephemeral=True)
 
 @bot.hybrid_command()
 async def all(ctx: commands.Context):
@@ -85,7 +85,7 @@ async def all(ctx: commands.Context):
         color=ctx.author.colour
     )
     if count == 0:
-        await ctx.send("No Torrents Currently Downloading!")
+        await ctx.send("No Torrents Currently Downloading!", ephemeral=True)
     else:
         for item in MovieList:
             embed.add_field(name="Movie", value=item[0])
@@ -93,7 +93,7 @@ async def all(ctx: commands.Context):
             embed.add_field(name="TV Show", value=item[0])
         for item in OtherList:
             embed.add_field(name="Other" ,value=item[0])
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, ephemeral=True)
 
 @bot.event
 async def on_ready():

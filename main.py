@@ -23,21 +23,21 @@ async def downloading(ctx: commands.Context):
     TVList = []
     OtherList = []
     count=0
-    for torrent in qbt_client.torrents.info.active():
+    for torrent in qbt_client.torrents.info.downloading():
         if torrent.category == 'radarr':
             count = count+1
             TempList = []
-            TempList.append(torrent.name + '\nProgress: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress:** ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
             MovieList.append(TempList)
         if torrent.category == 'tv-sonarr':
             count = count+1
             TempList = []
-            TempList.append(torrent.name + '\nProgress: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress:** ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
             TVList.append(TempList)
         if torrent.category != 'tv-sonarr' and torrent.category != 'radarr':
             count = count+1
             TempList = []
-            TempList.append(torrent.name + '\nProgress: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress:** ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
             OtherList.append(TempList)
 
     embed = discord.Embed(
@@ -57,35 +57,35 @@ async def downloading(ctx: commands.Context):
         await ctx.send(embed=embed, ephemeral=True)
 
 @bot.hybrid_command()
-async def all(ctx: commands.Context):
+async def active(ctx: commands.Context):
     MovieList = []
     TVList = []
     OtherList = []
     count=0
-    for torrent in qbt_client.torrents.info.all():
+    for torrent in qbt_client.torrents.info.active():
         if torrent.category == 'radarr':
             count = count+1
             TempList = []
-            TempList.append(torrent.name + '\nProgress: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress:** ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
             MovieList.append(TempList)
         if torrent.category == 'tv-sonarr':
             count = count+1
             TempList = []
-            TempList.append(torrent.name + '\nProgress: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress:** ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
             TVList.append(TempList)
         if torrent.category != 'tv-sonarr' and torrent.category != 'radarr':
             count = count+1
             TempList = []
-            TempList.append(torrent.name + '\nProgress: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress:** ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
             OtherList.append(TempList)
 
     embed = discord.Embed(
         title="**Torrents**",
-        description="All Torrents",
+        description="Currently Active Torrents",
         color=ctx.author.colour
     )
     if count == 0:
-        await ctx.send("No Torrents Currently Downloading!", ephemeral=True)
+        await ctx.send("No Torrents Currently Active!",  ephemeral=True)
     else:
         for item in MovieList:
             embed.add_field(name="Movie", value=item[0])
@@ -93,6 +93,52 @@ async def all(ctx: commands.Context):
             embed.add_field(name="TV Show", value=item[0])
         for item in OtherList:
             embed.add_field(name="Other" ,value=item[0])
+        await ctx.send(embed=embed, ephemeral=True)
+
+
+@bot.hybrid_command()
+async def downloading_tv (ctx: commands.Context):
+    TVList = []
+    count=0
+    for torrent in qbt_client.torrents.info.downloading():
+        if torrent.category == 'tv-sonarr':
+            count = count+1
+            TempList = []
+            TempList.append('**Name:** '+ torrent.name + '\n**Progress**: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            TVList.append(TempList)
+
+    embed = discord.Embed(
+        title="**Downloading TV Shows**",
+        color=ctx.author.colour
+    )
+    if count == 0:
+        await ctx.send("No TV Shows Currently Downloading!",  ephemeral=True)
+    else:
+        for item in TVList:
+            embed.add_field(name="", value=item[0])
+        await ctx.send(embed=embed, ephemeral=True)
+
+
+@bot.hybrid_command()
+async def downloading_movies (ctx: commands.Context):
+    MovieList = []
+    count=0
+    for torrent in qbt_client.torrents.info.downloading():
+        if torrent.category == 'radarr':
+            count = count+1
+            TempList = []
+            TempList.append('**Name:** ' + torrent.name + '\n**Progress**: ' + str(round(torrent.progress * 100, 2)) + "%" + '\n' + convertTime(torrent.eta))
+            MovieList.append(TempList)
+
+    embed = discord.Embed(
+        title="**Downloading Movies**",
+        color=ctx.author.colour
+    )
+    if count == 0:
+        await ctx.send("No Movies Currently Downloading!",  ephemeral=True)
+    else:
+        for item in MovieList:
+            embed.add_field(name="", value=item[0])
         await ctx.send(embed=embed, ephemeral=True)
 
 @bot.event
